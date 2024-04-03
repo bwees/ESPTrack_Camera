@@ -29,7 +29,7 @@ void setup_camera() {
 
     config.frame_size = FRAMESIZE_QVGA;
     config.jpeg_quality = 12;
-    config.fb_count = 10;
+    config.fb_count = 2;
 
     // camera init
     esp_err_t err = esp_camera_init(&config);
@@ -61,11 +61,11 @@ void setup() {
 
     setup_camera();
 
-    // create task for frame processor
-    xTaskCreatePinnedToCore(frame_processor, "frame_processor", 4096, NULL, 5, NULL, 1);
+    // // create task for frame processor
+    // xTaskCreatePinnedToCore(frame_processor, "frame_processor", 4096, NULL, 5, NULL, 0);
 
-    // create task for camera capture
-    xTaskCreatePinnedToCore(camera_cap, "camera_cap", 4096, NULL, 5, NULL, 1);
+    // // create task for camera capture
+    // xTaskCreatePinnedToCore(camera_cap, "camera_cap", 4096, NULL, 5, NULL, 1);
 }
 
 int last;
